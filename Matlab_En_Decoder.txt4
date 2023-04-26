@@ -1,0 +1,14 @@
+clc ; 
+clearall ; 
+closeall ; 
+msg = [ 1 1 1 ] ; 
+fprintf ( ” Message B i t s ” ) ; 
+disp ( msg ) ; 
+c o d e _ t r e l l i s = p o l y 2 t r e l l i s ( 3 , [ 7 5 ] ) ; 
+encoded_msg = c o n ve nc ( msg , c o d e _ t r e l l i s ) ; 
+fprintf ( ” Encoded Message ” ) 
+disp ( encoded_msg ) ; 
+tbdepth = 3 ;
+decoded_msg = v i t d e c ( encoded_msg , c o d e _ t r e l l i s , t b d e pt h , ’ t r u n c ’ , ’ h a r d ’ ) ; fprintf ( ” Decoded Message ” ) 
+disp ( decoded_msg ) ; 
+

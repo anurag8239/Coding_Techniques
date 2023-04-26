@@ -1,0 +1,32 @@
+clc ; 
+clear all ; 
+close all ; 
+n = input ( ” Enter the Code Word Length ( n ) ” ) ; 
+k = input ( ” Enter the Message Length ( k ) ” ) ; 
+f printf ( ” Enter the Parity matrix Element senclosed in [ ] row wiseaskis %d , enter %d elements \ n ” , k , k*(n−k ) ) ; 
+P = input ( ” Enter asenclosedin [ ] example [ 1 , 2 , 3 , 4 , . . . ] ” ) ; P = r e s h a p e ( P , [ n−k , k ] ) ; 
+P = transpose ( P ) ; 
+I = eye ( k ) ; 
+f printf ( ” Enter %d message bit ( s ) enclosedin [ ] ” , k ) ; 
+M = input ( ” Enter ” ) ; 
+G = [ I P ] ; 
+encData = encode (M, n , k , ’ linear / binary ’ ,G) ; 
+decData = decode ( encData , n , k , ’ linear / binary ’ ,G) ; 
+f printf ( ” Length of Code Word is %d \ n ” , n ) ; 
+f printf ( ” Length of Message is %d \ n ” , k ) ; 
+f printf ( ” Identity matrix is \ n ” ) 
+disp ( I ) ; 
+f printf ( ” Parity Matrix is \ n ” ) ; 
+disp ( P ) ; 
+f printf ( ” The generator Matrix is \ n ” ) ; 
+disp (G) ; 
+f printf ( ” The Message bitsare \ n ” ) ; 
+disp (M) ; 
+f printf ( ” The Encode data is \ n ” ) ; 
+disp ( encD at a ) ; 
+f printf ( ” The Decoded Data is \ n ” ) ; 
+disp ( decD at a ) ; 
+if (M == decD at a ) 
+f printf ( ” The Message was Encoded and Decoded Successfully ” ) ; else 
+f printf ( ” The Message was Not Encoded and Decoded ! ! ! . , TryAgai n . . . ” ) ; 
+end 

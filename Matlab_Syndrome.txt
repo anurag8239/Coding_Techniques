@@ -1,0 +1,59 @@
+c l c ; 
+c l e a r a l l ; 
+c l o s e a l l ; 
+n = i n p u t ( ’ E n t e r t h e CodeWord Le n gt h ’ ) ; 
+k = i n p u t ( ’ E n t e r Number o f Message B i t s ’ ) ; 
+G = i n p u t ( ’ E n t e r G e n e r a t o r M at ri x ’ ) ; 
+f o r i = 1 : 2^ k 
+f o r j = k : −1 : 1 
+i f rem ( i −1 , 2^ ( − j +k + 1 ) ) >= 2^ ( − j +k ) 
+M( i , j ) = 1 ; 
+e l s e 
+M( i , j ) = 0 ; 
+end 
+end 
+end 
+d i s p ( ’ Message M at ri x ’ ) ; 
+d i s p (M) ; 
+EncodeMsg = e nc o de (M, n , k , ’ l i n e a r ’ , G) ; 
+d i s p ( ’ Encoded Me s sa ge s ’ ) ; 
+d i s p ( EncodeMsg ) ; 
+P = hammgen ( n−k ) ; 
+E = s y n d t a b l e ( P ) ; 
+d i s p ( ’ E r r o r M at ri x ’ ) ; 
+d i s p ( E ) ; 
+P a r = G ( : , k + 1: n ) ; 
+P = ( P a r ) ’ ; 
+d i s p ( ’ P a r i t y M at ri x ’ ) ; 
+d i s p ( P ) ; 
+I = e ye ( k − 1 ) ; 
+H = [ P I ] ; 
+h = H ’ ; 
+S = mod ( E*h , 2 ) ; 
+d i s p ( ’ Syndrome T a bl e ’ ) ; 
+d i s p ( S ) ; 
+decodeMsg = dec o de ( EncodeMsg , n , k , ’ l i n e a r ’ , G) ; 
+d i s p ( ’ Dec o di n g Me s sa ge s ’ ) ; 
+d i s p ( decodeMsg ) ; 
+HammDis = z e r o s ( 2 ^ k , 1 ) ; 
+f o r i = 1: 2 ^ k 
+f o r j = 1 : n 
+i f EncodeMsg ( i , j ) == 1 
+HammDis ( i ) = HammDis ( i ) + 1 ; 
+end 
+end 
+end 
+s o r t ( HammDis ) ; 
+i f HammDis ( 1 ) == 0 
+dmin = HammDis ( 2 ) ; 
+e l s e 
+dmin = HammDis ( 1 ) ; 
+e n d i f 
+d i s p ( ” Minimum Hamming D i s t a n c e i s ” ) ; 
+d i s p ( dmin ) ; 
+E r r D et = dmin − 1 ; 
+E r rC o r = E r r D et / 2 ; 
+d i s p ( ” No . o f E r r o r ( s ) D et e c t e d ” ) ; 
+d i s p ( E r r D et ) 
+d i s p ( ” No . o f E r r o r ( s ) C o r r e c t e d ” ) ; 
+d i s p ( E r rC o r ) ; 
